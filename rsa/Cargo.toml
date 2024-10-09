@@ -1,0 +1,10 @@
+[package]
+name = "rsa"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rsa = "0.3.0"
+rand = "0.7.0"
+sha2 = "0.10"
+rand_core = "0.6.4"
