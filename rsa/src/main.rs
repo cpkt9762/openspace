@@ -1,3 +1,4 @@
+use base58::ToBase58;
 use rand::rngs::{OsRng, StdRng};
 use rand::SeedableRng;
 use rand_core::RngCore;
@@ -87,8 +88,9 @@ fn main() {
     let data_to_sign = format!("{}{}", nickname, nonce);
 
     // 使用私钥签名数据
-    let signature = sign_data(&private_key, &data_to_sign);
-    println!("签名成功，签名: {:?}", signature);
+    let signature: Vec<u8> = sign_data(&private_key, &data_to_sign);
+    let hex_string = hex::encode(signature.clone());
+    println!("签名成功，签名: {:?}", hex_string);
 
     // 使用公钥验证签名
     let is_valid = verify_signature(&public_key, &data_to_sign, &signature);
